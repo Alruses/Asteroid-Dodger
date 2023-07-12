@@ -16,6 +16,12 @@ class Asteroid(pygame.sprite.Sprite):
         #or should they bounce until we destroy them with a laser?
 
         if self.rect.left < 0 or self.rect.right > screen_info.current_w:
-            return
+            self.speed[0] *= -1
+            self.image = pygame.transform.flip(self.image, True, False)
+            self.rect.move_ip(self.speed[0], 0)
+
+            #self.rect.center = (screen_info.current_w, self.rect.center[1])
         if self.rect.top < 0 or self.rect.bottom > screen_info.current_h:
-            return
+            self.speed[1] *= -1
+            self.image = pygame.transform.flip(self.image, False, True)
+            self.rect.move_ip(0, self.speed[1])

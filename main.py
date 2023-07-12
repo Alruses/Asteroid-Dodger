@@ -21,6 +21,8 @@ AsteroidCount = 2
 #instantiate our player
 player = Ship((20, 200))
 
+Asteroids = pygame.sprite.Group()
+rock1 = Asteroid((200,200), 100)
 
 def main():
     global screen
@@ -53,8 +55,10 @@ def main():
                     player.speed[1] = 0
         #to actually make this show up
         player.update()
+        rock1.update()
         screen.fill(color)
         screen.blit(player.image, player.rect)
+        screen.blit(rock1.image, rock1.rect)
         pygame.display.flip()
        
 
